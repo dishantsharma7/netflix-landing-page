@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { BiPlus, BiPlay } from "react-icons/bi";
 
-const apiKey = "93c0d0200ceb0d493130841fc670a3a5";
+const apiKey = process.env.REACT_APP_API_KEY;
 const url = "https://api.themoviedb.org/3";
 const popular = "popular";
 const upcoming = "upcoming";
@@ -34,6 +34,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchPopular = async () => {
+      console.log(apiKey);
       const {
         data: { results },
       } = await axios.get(`${url}/movie/${popular}?api_key=${apiKey}`);
